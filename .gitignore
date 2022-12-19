@@ -2,10 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/Biglead.Autoinbox/.vs/Biglead.Autoinbox/v16/Server/sqlite3
 /.vs
-/Winform.AutoSendSms/Winform.AutoSendSms/obj/Debug
-/Winform.AutoSendSms/.vs/Winform.AutoSendSms/v16
-/Winform.AutoSendSms/.vs/Biglead.Autoinbox/v16
-/Biglead.Autoinbox/.vs/Biglead.Autoinbox/v16
-/Biglead.Autoinbox/Biglead.Autoinbox/bin/Debug
-/Biglead.Autoinbox/Biglead.Autoinbox/obj/Debug
