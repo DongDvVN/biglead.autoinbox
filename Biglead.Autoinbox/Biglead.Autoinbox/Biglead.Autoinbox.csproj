@@ -28,7 +28,7 @@
     <InstallUrl>https://raw.githubusercontent.com/DongDvVN/biglead.autoinbox/master/published/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="5285a761bbd0628e3bc1.ico" />
+    <Content Include="chromedriver.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets')" />
