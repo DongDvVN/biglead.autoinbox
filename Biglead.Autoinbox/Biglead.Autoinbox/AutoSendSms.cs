@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -201,12 +202,17 @@ namespace Biglead.Autoinbox
                                                 Thread.Sleep(new Random().Next(1000, 3000));
                                                 foreach (var item in lstImages)
                                                 {
+                                                    Image image = null;
+                                                    using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                    {
+                                                        image = Image.FromStream(fs);
+                                                    }
+                                                    Clipboard.SetImage(image);
+                                                    driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                     Thread.Sleep(new Random().Next(1000, 3000));
-                                                    driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                    action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                    action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                     Thread.Sleep(new Random().Next(1000, 3000));
-                                                    SendKeys.SendWait(item);
-                                                    Thread.Sleep(new Random().Next(1000, 3000));
-                                                    SendKeys.SendWait("{ENTER}");
                                                 }
                                             }
                                             if (lstContents != null && lstContents.Count > 0)
@@ -260,12 +266,17 @@ namespace Biglead.Autoinbox
                                         Thread.Sleep(new Random().Next(1000, 3000));
                                         foreach (var item in lstImages)
                                         {
+                                            Image image = null;
+                                            using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                            {
+                                                image = Image.FromStream(fs);
+                                            }
+                                            Clipboard.SetImage(image);
+                                            driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                             Thread.Sleep(new Random().Next(1000, 3000));
-                                            driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                            action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                            action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                             Thread.Sleep(new Random().Next(1000, 3000));
-                                            SendKeys.SendWait(item);
-                                            Thread.Sleep(new Random().Next(1000, 3000));
-                                            SendKeys.SendWait("{ENTER}");
                                         }
                                     }
                                     if (lstContents != null && lstContents.Count > 0)
@@ -325,12 +336,17 @@ namespace Biglead.Autoinbox
                                                     Thread.Sleep(new Random().Next(1000, 3000));
                                                     foreach (var item in lstImages)
                                                     {
+                                                        Image image = null;
+                                                        using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                        {
+                                                            image = Image.FromStream(fs);
+                                                        }
+                                                        Clipboard.SetImage(image);
+                                                        driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                         Thread.Sleep(new Random().Next(1000, 3000));
-                                                        driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                        action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                        action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                         Thread.Sleep(new Random().Next(1000, 3000));
-                                                        SendKeys.SendWait(item);
-                                                        Thread.Sleep(new Random().Next(1000, 3000));
-                                                        SendKeys.SendWait("{ENTER}");
                                                     }
                                                 }
                                                 if (lstContents != null && lstContents.Count > 0)
@@ -383,12 +399,17 @@ namespace Biglead.Autoinbox
                                         {
                                             foreach (var item in lstImages)
                                             {
+                                                Image image = null;
+                                                using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                {
+                                                    image = Image.FromStream(fs);
+                                                }
+                                                Clipboard.SetImage(image);
+                                                driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                 Thread.Sleep(new Random().Next(1000, 3000));
-                                                driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                 Thread.Sleep(new Random().Next(1000, 3000));
-                                                SendKeys.SendWait(item);
-                                                Thread.Sleep(new Random().Next(1000, 3000));
-                                                SendKeys.SendWait("{ENTER}");
                                             }
                                         }
                                         if (lstContents != null && lstContents.Count > 0)
