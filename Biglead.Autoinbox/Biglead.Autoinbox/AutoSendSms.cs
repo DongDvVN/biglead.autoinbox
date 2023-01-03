@@ -192,9 +192,14 @@ namespace Biglead.Autoinbox
                                         driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                         var strDateSMS = driver.FindElements(By.ClassName("timestamp"))[0].Text;
                                         var dateSMS = DateTime.Now;
-
-                                        if (strDateSMS.Length != 9)
+                                        if (strDateSMS.Length == 10)
+                                        {
+                                            CultureInfo vn = new CultureInfo("vi-VN");
+                                            dateSMS = Convert.ToDateTime(strDateSMS.Trim(), vn.DateTimeFormat);
+                                        }
+                                        else
                                             dateSMS = ConvertDateSms(strDateSMS);
+
                                         if (dateSMS < searchDate)
                                         {
                                             if (lstImages != null && lstImages.Count > 0)
