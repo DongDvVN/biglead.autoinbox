@@ -445,6 +445,7 @@ namespace Biglead.Autoinbox
                             }
                             else continue;
                         }
+                        lblNotifySend.Text = "Gửi tin nhắn hoàn tất";
                         CloseSelenium(driver);
                         ShowNotify("Gửi tin nhắn hoàn tất", (int)TypeNotify.Success);
                     }
