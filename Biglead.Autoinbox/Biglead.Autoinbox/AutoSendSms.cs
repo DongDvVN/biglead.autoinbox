@@ -197,6 +197,8 @@ namespace Biglead.Autoinbox
                                             CultureInfo vn = new CultureInfo("vi-VN");
                                             dateSMS = Convert.ToDateTime(strDateSMS.Trim(), vn.DateTimeFormat);
                                         }
+                                        else if (strDateSMS.Length == 5)
+                                            dateSMS = DateTime.Now;
                                         else
                                             dateSMS = ConvertDateSms(strDateSMS);
 
