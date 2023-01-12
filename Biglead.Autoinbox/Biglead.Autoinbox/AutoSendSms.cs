@@ -145,7 +145,7 @@ namespace Biglead.Autoinbox
                         if (driver.Url.Contains("checkpoint"))
                         {
                             ShowNotify("Bảo mật 2 lớp, nhập mã vào Face. Hệ thống dừng 2 phút rồi chạy tiếp", (int)TypeNotify.Error);
-                            Thread.Sleep(1000 * 2 * 60); // nghỉ 2 phút rồi cạy tiếp
+                            Thread.Sleep(1000 * 2 * 60); // nghỉ 2 phút rồi chạy tiếp
                         }
                         if (typeFanpage == (int)TypeFanpage.FanpagePro5)
                         {
