@@ -144,15 +144,13 @@ namespace Biglead.Autoinbox
                     {
                         if (driver.Url.Contains("checkpoint"))
                         {
-                            ShowNotify("Bảo mật 2 lớp, nhập mã vào Face. Hệ thống dừng 3 phút rồi chạy tiếp", (int)TypeNotify.Error);
-                            Thread.Sleep(1000 * 3 * 60); // nghỉ 3 phút rồi cạy tiếp
+                            ShowNotify("Bảo mật 2 lớp, nhập mã vào Face. Hệ thống dừng 2 phút rồi chạy tiếp", (int)TypeNotify.Error);
+                            Thread.Sleep(1000 * 2 * 60); // nghỉ 2 phút rồi cạy tiếp
                         }
                         if (typeFanpage == (int)TypeFanpage.FanpagePro5)
                         {
                             //vào fanpage
                             driver.Navigate().GoToUrl(linkFanpage);
-                            Thread.Sleep(new Random().Next(1000, 2000));
-                            driver.FindElement(By.ClassName("xwzsa0r")).Click();
                             Thread.Sleep(new Random().Next(1000, 2000));
                             driver.Navigate().GoToUrl("https://business.facebook.com");
                             Thread.Sleep(new Random().Next(1000, 2000));
