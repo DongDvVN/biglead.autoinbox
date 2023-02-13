@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -143,15 +144,13 @@ namespace Biglead.Autoinbox
                     {
                         if (driver.Url.Contains("checkpoint"))
                         {
-                            ShowNotify("Bảo mật 2 lớp, nhập mã vào Face. Hệ thống dừng 3 phút rồi chạy tiếp", (int)TypeNotify.Error);
-                            Thread.Sleep(1000 * 3 * 60); // nghỉ 3 phút rồi cạy tiếp
+                            ShowNotify("Bảo mật 2 lớp, nhập mã vào Face. Hệ thống dừng 2 phút rồi chạy tiếp", (int)TypeNotify.Error);
+                            Thread.Sleep(1000 * 2 * 60); // nghỉ 2 phút rồi chạy tiếp
                         }
                         if (typeFanpage == (int)TypeFanpage.FanpagePro5)
                         {
                             //vào fanpage
                             driver.Navigate().GoToUrl(linkFanpage);
-                            Thread.Sleep(new Random().Next(1000, 2000));
-                            driver.FindElement(By.ClassName("xwzsa0r")).Click();
                             Thread.Sleep(new Random().Next(1000, 2000));
                             driver.Navigate().GoToUrl("https://business.facebook.com");
                             Thread.Sleep(new Random().Next(1000, 2000));
@@ -191,9 +190,16 @@ namespace Biglead.Autoinbox
                                         driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                         var strDateSMS = driver.FindElements(By.ClassName("timestamp"))[0].Text;
                                         var dateSMS = DateTime.Now;
-
-                                        if (strDateSMS.Length != 9)
+                                        if (strDateSMS.Length == 10)
+                                        {
+                                            CultureInfo vn = new CultureInfo("vi-VN");
+                                            dateSMS = Convert.ToDateTime(strDateSMS.Trim(), vn.DateTimeFormat);
+                                        }
+                                        else if (strDateSMS.Length == 5)
+                                            dateSMS = DateTime.Now;
+                                        else
                                             dateSMS = ConvertDateSms(strDateSMS);
+
                                         if (dateSMS < searchDate)
                                         {
                                             if (lstImages != null && lstImages.Count > 0)
@@ -201,12 +207,17 @@ namespace Biglead.Autoinbox
                                                 Thread.Sleep(new Random().Next(1000, 3000));
                                                 foreach (var item in lstImages)
                                                 {
+                                                    Image image = null;
+                                                    using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                    {
+                                                        image = Image.FromStream(fs);
+                                                    }
+                                                    Clipboard.SetImage(image);
+                                                    driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                     Thread.Sleep(new Random().Next(1000, 3000));
-                                                    driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                    action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                    action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                     Thread.Sleep(new Random().Next(1000, 3000));
-                                                    SendKeys.SendWait(item);
-                                                    Thread.Sleep(new Random().Next(1000, 3000));
-                                                    SendKeys.SendWait("{ENTER}");
                                                 }
                                             }
                                             if (lstContents != null && lstContents.Count > 0)
@@ -260,12 +271,17 @@ namespace Biglead.Autoinbox
                                         Thread.Sleep(new Random().Next(1000, 3000));
                                         foreach (var item in lstImages)
                                         {
+                                            Image image = null;
+                                            using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                            {
+                                                image = Image.FromStream(fs);
+                                            }
+                                            Clipboard.SetImage(image);
+                                            driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                             Thread.Sleep(new Random().Next(1000, 3000));
-                                            driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                            action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                            action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                             Thread.Sleep(new Random().Next(1000, 3000));
-                                            SendKeys.SendWait(item);
-                                            Thread.Sleep(new Random().Next(1000, 3000));
-                                            SendKeys.SendWait("{ENTER}");
                                         }
                                     }
                                     if (lstContents != null && lstContents.Count > 0)
@@ -325,12 +341,17 @@ namespace Biglead.Autoinbox
                                                     Thread.Sleep(new Random().Next(1000, 3000));
                                                     foreach (var item in lstImages)
                                                     {
+                                                        Image image = null;
+                                                        using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                        {
+                                                            image = Image.FromStream(fs);
+                                                        }
+                                                        Clipboard.SetImage(image);
+                                                        driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                         Thread.Sleep(new Random().Next(1000, 3000));
-                                                        driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                        action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                        action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                         Thread.Sleep(new Random().Next(1000, 3000));
-                                                        SendKeys.SendWait(item);
-                                                        Thread.Sleep(new Random().Next(1000, 3000));
-                                                        SendKeys.SendWait("{ENTER}");
                                                     }
                                                 }
                                                 if (lstContents != null && lstContents.Count > 0)
@@ -383,12 +404,17 @@ namespace Biglead.Autoinbox
                                         {
                                             foreach (var item in lstImages)
                                             {
+                                                Image image = null;
+                                                using (FileStream fs = new FileStream(item, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                                                {
+                                                    image = Image.FromStream(fs);
+                                                }
+                                                Clipboard.SetImage(image);
+                                                driver.FindElement(By.ClassName("uiTextareaAutogrow")).Click();
                                                 Thread.Sleep(new Random().Next(1000, 3000));
-                                                driver.FindElement(By.ClassName("sx_56e74b")).Click();
+                                                action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("v").Build().Perform();
+                                                action.KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
                                                 Thread.Sleep(new Random().Next(1000, 3000));
-                                                SendKeys.SendWait(item);
-                                                Thread.Sleep(new Random().Next(1000, 3000));
-                                                SendKeys.SendWait("{ENTER}");
                                             }
                                         }
                                         if (lstContents != null && lstContents.Count > 0)
@@ -424,6 +450,7 @@ namespace Biglead.Autoinbox
                             }
                             else continue;
                         }
+                        lblNotifySend.Text = "Gửi tin nhắn hoàn tất";
                         CloseSelenium(driver);
                         ShowNotify("Gửi tin nhắn hoàn tất", (int)TypeNotify.Success);
                     }
